@@ -13,4 +13,3 @@ django_dev.log
 logs/
 celerybeat-schedule
 celerybeat.pid
-client_secret.json

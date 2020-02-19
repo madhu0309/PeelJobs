@@ -1,5 +1,4 @@
 import os
-import json
 from celery.schedules import crontab
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -7,11 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DEFAULT_FROM_EMAIL = os.getenv("DEFAULTFROMEMAIL")
+DEFAULT_FROM_EMAIL = 'PeelJobs <support@peeljobs.com>'
 
-CONTACT_NUMBER = os.getenv("CONTACTNUMBER")
+CONTACT_NUMBER = '040 6599 6999'
 
-PEEL_URL = os.getenv("PEELURL")
+PEEL_URL = "http://peeljobs.com/"
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
@@ -23,7 +22,7 @@ SOF_APP_SECRET = os.getenv('SOFAPPSECRET')
 SOF_APP_KEY = os.getenv('SOFAPPKEY')
 
 # github app
-broker_api = os.getenv("BROKER_API")
+broker_api = 'http://guest:guest@localhost:15672/api/'
 
 # Enable debug logging
 
@@ -54,11 +53,7 @@ FB_PEELJOBS_PAGEID = os.getenv('FBPEELJOBSPAGEID')
 # google app
 GP_CLIENT_ID = GOOGLE_OAUTH2_CLIENT_ID = os.getenv('GPCLIENTID')
 GP_CLIENT_SECRET = GOOGLE_OAUTH2_CLIENT_SECRET = os.getenv('GPCLIENTSECRET')
-GOOGLE_OAUTH2_REDIRECT = os.getenv("GOOGLEOAUTH2REDIRECT")
-
-if os.getenv("CLIENT_SECRET_DATA"):
-    with open('client_secret.json', 'w') as outfile:
-        json.dump(json.loads(os.getenv("CLIENT_SECRET_DATA")), outfile)
+GOOGLE_OAUTH2_REDIRECT = 'https://peeljobs.com/oauth2callback/'
 
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret.json'
 
@@ -93,9 +88,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("POSTGRES_NAME"),
-        'USER': os.getenv("POSTGRES_USER"),
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+        'NAME': 'peeljobs',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '5432'}
 }
@@ -157,7 +152,6 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    "django.contrib.messages",
     'sorl.thumbnail',
     'compressor',
     'storages',
@@ -200,15 +194,14 @@ TEMPLATES = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+AWS_STORAGE_BUCKET_NAME = "peeljobs"
+AM_ACCESS_KEY = AWS_ACCESS_KEY_ID = 'AKIAIE7KJAO2Q4OWK47Q'
+AM_PASS_KEY = AWS_SECRET_ACCESS_KEY = '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'
 
-AWS_STORAGE_BUCKET_NAME = os.getenv("AWSSTORAGEBUCKETNAME")
-AM_ACCESS_KEY = AWS_ACCESS_KEY_ID = os.getenv("AMACCESSKEY")
-AM_PASS_KEY = AWS_SECRET_ACCESS_KEY = os.getenv("AMPASSKEY")
-
-CLOUDFRONT_DOMAIN = os.getenv("CLOUDFRONTDOMAIN")
-AWS_S3_CUSTOM_DOMAIN = os.getenv("AWSS3CUSTOMDOMAIN")
-# CLOUDFRONT_DOMAIN = "cdn.peeljobs.com"
-CLOUDFRONT_ID = os.getenv("CLOUDFRONTID")
+CLOUDFRONT_DOMAIN = "d2pt99vxm3n8bc.cloudfront.net"
+AWS_S3_CUSTOM_DOMAIN = "d2pt99vxm3n8bc.cloudfront.net"
+#CLOUDFRONT_DOMAIN = "cdn.peeljobs.com"
+CLOUDFRONT_ID = "E1QCP9K931VYC3"
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_S3_PATH = "media"
@@ -221,9 +214,9 @@ COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 COMPRESS_REBUILD_TIMEOUT = 5400
 
 AWS_HEADERS = {
-    'Expires': 'Sun, 15 June 2020 20:00:00 GMT',
-    'Cache-Control': 'max-age=16400000',
-    'public-read': True,
+   'Expires': 'Sun, 15 June 2020 20:00:00 GMT',
+   'Cache-Control': 'max-age=16400000',
+   'public-read': True,
 }
 
 AWS_IS_GZIPPED = True
@@ -346,28 +339,28 @@ THUMBNAIL_FORMAT = 'PNG'
 THUMBNAIL_CACHE_TIMEOUT = 3600 * 24 * 365 * 10
 
 TIMEZONE = 'Asia/Calcutta'
-LOGO = 'https://%s/logo.png' % (CLOUDFRONT_DOMAIN)
+LOGO = 'https://%s/logo.png' %(CLOUDFRONT_DOMAIN)
 
 BULK_SMS_USERNAME = os.getenv('BULKSMSUSERNAME')
 BULK_SMS_PASSWORD = os.getenv('BULKSMSPASSWORD')
 BULK_SMS_FROM = os.getenv('BULKSMSFROM')
 
-MINIFIED_URL = os.getenv("MINIFIED_URL")
+MINIFIED_URL = 'AIzaSyBGBYur-qfZd_bkoIJ7pETHAlxh48Z54n4'
 
-MONGO_HOST = os.getenv("MONGO_HOST")
-MONGO_PORT = int(os.getenv("MONGO_PORT"))
-MONGO_DB = os.getenv("MONGO_DB")
-MONGO_USER = os.getenv("MONGO_USER")
-MONGO_PWD = os.getenv("MONGO_PWD")
+MONGO_HOST = 'localhost'
+MONGO_PORT = 27017
+MONGO_DB = 'peeljobs'
+MONGO_USER = 'peeluser'
+MONGO_PWD = 'f^t678bvgf788'
 
 THUMBNAIL_BACKEND = 'jobsp.thumbnailname.SEOThumbnailBackend'
 THUMBNAIL_DEBUG = True
 
 THUMBNAIL_FORCE_OVERWRITE = True
 
-INACTIVE_MAIL_SENDER = os.getenv("INACTIVEMAILSENDER")
-MAIL_SENDER = os.getenv("MAILSENDER")
-SMS_AUTH_KEY = os.getenv("SMSAUTHKEY")
+INACTIVE_MAIL_SENDER = 'MAILGUN'
+MAIL_SENDER = 'AMAZON'
+SMS_AUTH_KEY = 'e8e953ebc5e53973d1aa37241982f86b'
 
 
 AWS_ENABLED = False

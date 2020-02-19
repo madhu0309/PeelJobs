@@ -25,7 +25,7 @@ INSTALLED_APPS = INSTALLED_APPS + (
     'behave_django',
 )
 
-MIDDLEWARE = [
+MIDDLEWARE =  [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ] + MIDDLEWARE
 MIDDLEWARE_CLASSES = MIDDLEWARE
@@ -55,8 +55,8 @@ LOGGING = {
                       '%(process)d %(thread)d %(message)s'
         },
         'standard': {
-            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            # 'datefmt' : "%d/%b/%Y %H:%M:%S"
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            #'datefmt' : "%d/%b/%Y %H:%M:%S"
         },
     },
     'handlers': {
@@ -112,13 +112,9 @@ DEBUG_TOOLBAR_PANELS = [
 MAIL_SENDER = ''
 INACTIVE_MAIL_SENDER = ''
 
+AWS_STORAGE_BUCKET_NAME = "peeljobs"
+# CLOUDFRONT_DOMAIN = "cdn.peeljobs.com"
+# CLOUDFRONT_ID = "E1QCP9K931VYC3"
+# AWS_S3_CUSTOM_DOMAIN = "cdn.peeljobs.com"
+
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
-
-
-AWS_STORAGE_BUCKET_NAME = os.getenv("AWSSTORAGEBUCKETNAME")
-AM_ACCESS_KEY = AWS_ACCESS_KEY_ID = os.getenv("AMACCESSKEY")
-AM_PASS_KEY = AWS_SECRET_ACCESS_KEY = os.getenv("AMPASSKEY")
-
-CLOUDFRONT_DOMAIN = os.getenv("CLOUDFRONTDOMAIN")
-AWS_S3_CUSTOM_DOMAIN = os.getenv("AWSS3CUSTOMDOMAIN")
-CLOUDFRONT_ID = os.getenv("CLOUDFRONTID")

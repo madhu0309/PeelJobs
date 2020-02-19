@@ -42,6 +42,7 @@ def updating_jobposts():
     for job in jobposts:
         job_url = get_absolute_url(job)
         job.slug = get_absolute_url(job)
+        #job.minified_url = google_mini('https://peeljobs.com' + job_url, settings.wMINIFIED_URL)
         job.save()
 
 
@@ -139,6 +140,7 @@ def jobpost_published():
         job.published_on = datetime.now()
         job_url = get_absolute_url(job)
         job.slug = job_url
+        #job.minified_url = google_mini('https://peeljobs.com' + job_url, settings.MINIFIED_URL)
         job.save()
         posts = FacebookPost.objects.filter(job_post=job)
         for each in posts:
@@ -521,7 +523,7 @@ def postontwitter(user, job_post, page_or_profile):
         job_name = job_post.title
         skill_hash = ''.join([' @' + name.replace(' ', '').lower() for name in job_post.skills.values_list('name', flat=True)])
         loc_hash = ''.join([' @' + name.replace(' ', '').lower() for name in job_post.location.values_list('name', flat=True)])
-        job_name = job_name + skill_hash + loc_hash + " @Jobs @PeelJobs"
+        job_name = job_name + skill_hash + loc_hash + " #Jobs #PeelJobs"
         twitter_status = job_name + '  http://peeljobs.com' + str(job_post.get_absolute_url())
         try:
             response = twitter.update_status(status=twitter_status)

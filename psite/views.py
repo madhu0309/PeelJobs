@@ -63,7 +63,7 @@ def custom_404(request, exception):
     return render(request, '404.html', {'message': message, 'reason': reason}, status=404)
 
 
-def custom_500(request):
+def custom_500(request, exception):
     message = "500, We are sorry! The server Encountered an Internal error"
     reason = "We are unable to complete your request. Please try again later"
 
