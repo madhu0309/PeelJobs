@@ -181,7 +181,7 @@ handler404 = custom_404
 handler500 = custom_500
 
 if settings.DEBUG:
-    url(r'^profiler/', include('django_web_profiler.urls', namespace="django_web_profiler")),
+    #url(r'^profiler/', include('django_web_profiler.urls', namespace="django_web_profiler")),
 
     import debug_toolbar
     urlpatterns.append(url(r'^__debug__/', include(debug_toolbar.urls)))

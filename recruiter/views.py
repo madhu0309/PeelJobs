@@ -91,7 +91,6 @@ def jobs_list(request):
                                                        'previous_page': previous_page,
                                                        'current_page': page,
                                                        'last_page': no_pages,
-                                                       'current_url': reverse('recruiter:list'),
                                                        'search_value': request.POST['search_value'] if 'search_value' in request.POST else 'All'})
 
 
@@ -128,7 +127,6 @@ def inactive_jobs(request):
                                                        'previous_page': previous_page,
                                                        'current_page': page,
                                                        'last_page': no_pages,
-                                                       'current_url': reverse('recruiter:inactive_jobs'),
                                                        'search_value': request.POST['search_value'] if 'search_value' in request.POST.keys() else 'All'})
 
 
@@ -2866,7 +2864,7 @@ def download_applicants(request, jobpost_id, status):
     search_locations = ""
     search_skills = ""
     if request.GET.get('search_skills'):
-        search_skills = request.GET.get('search_skills').split(',')
+        search_skills =  request.GET.get('search_skills').split(',')
     if request.GET.get('search_locations'):
         search_locations =  request.GET.get('search_locations').split(',')
     all_applicants = AppliedJobs.objects.filter(

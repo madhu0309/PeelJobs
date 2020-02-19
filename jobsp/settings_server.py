@@ -6,24 +6,24 @@ CELERY_IMPORTS = ("social.tasks", "dashboard.tasks")
 
 # Set your DSN value
 RAVEN_CONFIG = {
-    'dsn': os.getenv("RAVEN_CONFIG_DSN"),
+    'dsn': 'http://9a77dfc9fee044429c4e480af7ebfe4c:fe44ea71149c423ea704ab403afba68f@sentry.micropyramid.com/5',
 }
 
 # Add raven to the list of installed apps
 INSTALLED_APPS = INSTALLED_APPS + (
     # ...
     'raven.contrib.django.raven_compat',
-    # 'elasticapm.contrib.django',
+#    'elasticapm.contrib.django',
 )
 ELASTIC_APM = {
-    'APP_NAME': os.getenv("ELASTIC_APM_APP_NAME"),
-    'SECRET_TOKEN': os.getenv("ELASTIC_APM_SECRET_TOKEN"),
+    'APP_NAME': 'peeljobs',
+    'SECRET_TOKEN': '29c4e480af7%$%^eb',
 }
 
 MIDDLEWARE = [
     'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
     'raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware',
-    # 'elasticapm.contrib.django.middleware.TracingMiddleware',
+#    'elasticapm.contrib.django.middleware.TracingMiddleware',
 ] + MIDDLEWARE
 
 MIDDLEWARE_CLASSES = MIDDLEWARE
@@ -87,10 +87,9 @@ INTERNAL_IPS = ('127.0.0.1', '183.82.113.154')
 #     'debug_toolbar.panels.logging.LoggingPanel',
 #     'debug_toolbar.panels.redirects.RedirectsPanel',
 # ]
-
-INACTIVE_MAIL_SENDER = os.getenv("INACTIVEMAILSENDER")
-MAIL_SENDER = os.getenv("MAILSENDER")
+MAIL_SENDER = 'AMAZON'
+INACTIVE_MAIL_SENDER = 'SENDGRID'
 
 GIT_BRANCH = 'master'
 UWSGI_FILE_NAME = 'jobs_uwsgi.ini'
-AWS_S3_CUSTOM_DOMAIN = os.getenv("AWSS3CUSTOMDOMAIN")
+AWS_S3_CUSTOM_DOMAIN = "d2pt99vxm3n8bc.cloudfront.net"

@@ -235,7 +235,7 @@ class Skill(models.Model):
     meta_title = models.TextField(default='')
     meta_description = models.TextField(default='')
     page_content = models.TextField(default='')
-    meta = JSONField(default=dict)
+    meta = JSONField(default={})
     skill_type = models.CharField(
         choices=SKILL_TYPE, max_length=20, default='it')
 
@@ -307,7 +307,7 @@ class City(models.Model):
     internship_meta_description = models.TextField(default='')
     page_content = models.TextField(default='')
     internship_content = models.TextField(default='')
-    meta = JSONField(default=dict)
+    meta = JSONField(default={})
     parent_city = models.ForeignKey('self', related_name='child_cities', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -1716,7 +1716,7 @@ class SearchResult(models.Model):
     other_skill = models.CharField(max_length=1000)
     locations = models.ManyToManyField(City, related_name='location_search')
     other_location = models.CharField(max_length=1000)
-    search_text = JSONField(default=dict)
+    search_text = JSONField(default={})
     industry = models.CharField(max_length=1000)
     search_on = models.DateTimeField(auto_now=True)
     functional_area = models.CharField(max_length=1000)
