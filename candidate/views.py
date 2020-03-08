@@ -39,7 +39,6 @@ db = mongoconnection()
 
 
 def index(request):
-
     latest_jobs_list = cache.get('latest_1hr_jobs_list')
     if not latest_jobs_list:
         latest_jobs_list = JobPost.objects.filter(status='Live').exclude(
