@@ -6,11 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DEFAULT_FROM_EMAIL = 'PeelJobs <support@peeljobs.com>'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
-CONTACT_NUMBER = '040 6599 6999'
+CONTACT_NUMBER = os.getenv('CONTACT_NUMBER')
 
-PEEL_URL = "http://peeljobs.com/"
+PEEL_URL = os.getenv('PEEL_URL')
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
@@ -22,7 +22,7 @@ SOF_APP_SECRET = os.getenv('SOFAPPSECRET')
 SOF_APP_KEY = os.getenv('SOFAPPKEY')
 
 # github app
-broker_api = 'http://guest:guest@localhost:15672/api/'
+broker_api = os.getenv('broker_api')
 
 # Enable debug logging
 
@@ -53,9 +53,9 @@ FB_PEELJOBS_PAGEID = os.getenv('FBPEELJOBSPAGEID')
 # google app
 GP_CLIENT_ID = GOOGLE_OAUTH2_CLIENT_ID = os.getenv('GPCLIENTID')
 GP_CLIENT_SECRET = GOOGLE_OAUTH2_CLIENT_SECRET = os.getenv('GPCLIENTSECRET')
-GOOGLE_OAUTH2_REDIRECT = 'https://peeljobs.com/oauth2callback/'
+GOOGLE_OAUTH2_REDIRECT = os.getenv('GOOGLE_OAUTH2_REDIRECT')
 
-GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret.json'
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = os.getenv('GOOGLE_OAUTH2_CLIENT_SECRETS_JSON')
 
 # ln app
 LN_API_KEY = os.getenv('LNAPIKEY')
@@ -77,7 +77,7 @@ SG_USER = os.getenv('SGUSER')
 SG_PWD = os.getenv('SGPWD')
 
 # Make this unique, and don"t share it with anybody.
-SECRET_KEY = "=v0l#u!6$z@wjc^zepe1-u0!!7f1y)&4(#&coi5xzm1s=s(g4e"
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 ADMINS = (
     # ("Your Name", "your_email@example.com"),
@@ -194,14 +194,13 @@ TEMPLATES = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-AWS_STORAGE_BUCKET_NAME = "peeljobs"
-AM_ACCESS_KEY = AWS_ACCESS_KEY_ID = 'AKIAIE7KJAO2Q4OWK47Q'
-AM_PASS_KEY = AWS_SECRET_ACCESS_KEY = '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'
-
-CLOUDFRONT_DOMAIN = "d2pt99vxm3n8bc.cloudfront.net"
-AWS_S3_CUSTOM_DOMAIN = "d2pt99vxm3n8bc.cloudfront.net"
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AM_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY_ID')
+AM_PASS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY') 
+CLOUDFRONT_DOMAIN = os.getenv('CLOUDFRONT_DOMAIN')
+AWS_S3_CUSTOM_DOMAIN = os.getenv('AWS_S3_CUSTOM_DOMAIN')
 #CLOUDFRONT_DOMAIN = "cdn.peeljobs.com"
-CLOUDFRONT_ID = "E1QCP9K931VYC3"
+CLOUDFRONT_ID = os.getenv('CLOUDFRONT_ID')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_S3_PATH = "media"
@@ -347,20 +346,20 @@ BULK_SMS_FROM = os.getenv('BULKSMSFROM')
 
 MINIFIED_URL = 'AIzaSyBGBYur-qfZd_bkoIJ7pETHAlxh48Z54n4'
 
-MONGO_HOST = 'localhost'
+MONGO_HOST = os.getenv('MONGO_HOST')
 MONGO_PORT = 27017
-MONGO_DB = 'peeljobs'
-MONGO_USER = 'peeluser'
-MONGO_PWD = 'f^t678bvgf788'
+MONGO_DB = os.getenv('MONGO_DB')
+MONGO_USER = os.getenv('MONGO_USER')
+MONGO_PWD = os.getenv('MONGO_PWD')
 
 THUMBNAIL_BACKEND = 'jobsp.thumbnailname.SEOThumbnailBackend'
 THUMBNAIL_DEBUG = True
 
 THUMBNAIL_FORCE_OVERWRITE = True
 
-INACTIVE_MAIL_SENDER = 'MAILGUN'
-MAIL_SENDER = 'AMAZON'
-SMS_AUTH_KEY = 'e8e953ebc5e53973d1aa37241982f86b'
+INACTIVE_MAIL_SENDER = os.getenv('INACTIVE_MAIL_SENDER')
+MAIL_SENDER = os.getenv('SMS_AUTH_KEY')
+SMS_AUTH_KEY = os.getenv('RAVEN_CONFIG ')
 
 
 AWS_ENABLED = False

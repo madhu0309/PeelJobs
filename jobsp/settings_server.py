@@ -5,20 +5,14 @@ DEBUG = False
 CELERY_IMPORTS = ("social.tasks", "dashboard.tasks")
 
 # Set your DSN value
-RAVEN_CONFIG = {
-    'dsn': 'http://9a77dfc9fee044429c4e480af7ebfe4c:fe44ea71149c423ea704ab403afba68f@sentry.micropyramid.com/5',
-}
-
+RAVEN_CONFIG = os.getenv('RAVEN_CONFIG')
 # Add raven to the list of installed apps
 INSTALLED_APPS = INSTALLED_APPS + (
     # ...
     'raven.contrib.django.raven_compat',
 #    'elasticapm.contrib.django',
 )
-ELASTIC_APM = {
-    'APP_NAME': 'peeljobs',
-    'SECRET_TOKEN': '29c4e480af7%$%^eb',
-}
+ELASTIC_APM = os.getenv('ELASTIC_APM')
 
 MIDDLEWARE = [
     'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
@@ -92,4 +86,4 @@ INACTIVE_MAIL_SENDER = 'SENDGRID'
 
 GIT_BRANCH = 'master'
 UWSGI_FILE_NAME = 'jobs_uwsgi.ini'
-AWS_S3_CUSTOM_DOMAIN = "d2pt99vxm3n8bc.cloudfront.net"
+AWS_S3_CUSTOM_DOMAIN = os.getenv('AWS_S3_CUSTOM_DOMAIN')
