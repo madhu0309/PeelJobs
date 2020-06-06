@@ -16,7 +16,7 @@ certifi==2019.11.28
 chardet==3.0.4
 coverage==4.5.1
 curtsies==0.3.1
-Django==2.0.2
+Django==2.2.13
 django-appconf==1.0.3
 django-behave==0.1.5
 django-blog-it==0.3
