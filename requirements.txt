@@ -78,7 +78,7 @@ python-http-client==3.2.5
 python-magic==0.4.15
 python-memcached==1.58
 pytz==2019.3
-PyYAML==5.3
+PyYAML==5.4
 raven==6.6.0
 rcssmin==1.0.6
 redis==2.10.6
