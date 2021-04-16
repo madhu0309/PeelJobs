@@ -22,7 +22,7 @@ django-behave==0.1.5
 django-blog-it==0.3
 django-celery-beat==1.1.1
 django-compressor==2.2
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 django-debug-toolbar-template-timings==0.9
 django-endless-pagination==2.0
 django-haystack==2.8.0
