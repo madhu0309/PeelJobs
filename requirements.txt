@@ -56,7 +56,7 @@ oauthlib==3.1.0
 parse==1.14.0
 parse-type==0.5.2
 pep8-naming==0.9.1
-Pillow==7.0.0
+Pillow==9.3.0
 prospector==0.12.7
 psycopg2-binary==2.7.4
 pyasn1==0.4.8
